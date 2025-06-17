@@ -1,0 +1,39 @@
+service: medium-readme-stats
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-northeast-2
+  profile: medium-readme-stats
+  logRetentionInDays: 14
+  architecture: arm64
+  memorySize: 128
+  timeout: 15
+  versionFunctions: false
+  stage: prod
+  httpApi:
+    cors: true
+  logs:
+    lambda:
+      logFormat: JSON
+      applicationLogLevel: INFO
+      systemLogLevel: INFO
+
+functions:
+  v1GetRecentPost:
+    handler: handler.handler
+    events:
+      - httpApi:
+          path: /v1/post
+          method: get
+
+build:
+  esbuild:
+    bundle: true
+    minify: true
+    exclude:
+      - aws-lambda
+
+package:
+  exclude:
+    - tests/**

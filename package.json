@@ -1,0 +1,23 @@
+{
+  "name": "medium-readme-stats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.9.0",
+  "dependencies": {
+    "aws-lambda": "^1.0.7",
+    "axios": "^1.10.0",
+    "fast-xml-parser": "^5.2.5"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.150",
+    "esbuild": "^0.25.5",
+    "vitest": "^3.2.3"
+  }
+}
