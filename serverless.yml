@@ -37,3 +37,23 @@ build:
 package:
   exclude:
     - tests/**
+
+resources:
+  Resources:
+    CustomDomain:
+      Type: AWS::ApiGatewayV2::DomainName
+      Properties:
+        DomainName: medium.junah.dev
+        DomainNameConfigurations:
+          - CertificateArn: arn:aws:acm:ap-northeast-2:491558244397:certificate/6679a127-5198-4119-a9ef-087240f267cd
+            EndpointType: REGIONAL
+            SecurityPolicy: TLS_1_2
+
+    ApiMapping:
+      Type: AWS::ApiGatewayV2::ApiMapping
+      Properties:
+        ApiId:
+          Ref: HttpApi
+        DomainName:
+          Ref: CustomDomain
+        Stage: $default
